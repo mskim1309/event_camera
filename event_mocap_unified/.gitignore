@@ -1,0 +1,10 @@
+build/
+/result/
+/third_party/
+/scripts/__pycache__/
+*.py[cod]
+*.raw
+/thesis_results/**/*.csv
+/thesis_results/**/*.png
+/thesis_results/**/*.json
+/thesis_results/**/*.docx

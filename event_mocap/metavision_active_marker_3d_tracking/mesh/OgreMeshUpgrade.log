@@ -1,0 +1,10 @@
+14:54:10: Creating resource group General
+14:54:10: Creating resource group Internal
+14:54:10: Creating resource group Autodetect
+14:54:10: Registering ResourceManager for type Material
+14:54:10: Registering ResourceManager for type Skeleton
+14:54:10: Registering ResourceManager for type Mesh
+14:54:10: OGRE EXCEPTION(7:InternalErrorException): Unexpected error while reading file multiLED.mesh in OgreMeshUpgrade at /build/ogre-1.9-kiU5_5/ogre-1.9-1.9.0+dfsg1/Tools/MeshUpgrader/src/main.cpp (line 992)
+14:54:10: Unregistering ResourceManager for type Mesh
+14:54:10: Unregistering ResourceManager for type Skeleton
+14:54:10: Unregistering ResourceManager for type Material

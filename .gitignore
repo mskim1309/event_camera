@@ -1,0 +1,32 @@
+# Event-camera recordings and their SDK-generated replay indexes
+*.raw
+*.raw.tmp_index
+
+# Build products and transient language artifacts
+**/build/
+**/__pycache__/
+*.py[cod]
+*.o
+*.a
+*.so
+*.so.*
+CMakeCache.txt
+CMakeFiles/
+
+# Generated pose/experiment outputs (the scripts and configurations are kept)
+event_mocap/camera_pose/pose/
+event_mocap/3d_pose/pose/
+event_mocap/final/pose/
+event_mocap_unified/result/
+event_mocap_unified/thesis_results/**/*.csv
+event_mocap_unified/thesis_results/**/*.png
+event_mocap_unified/thesis_results/**/*.json
+event_mocap_unified/thesis_results/**/*.docx
+
+# Downloaded or independently versioned third-party dependencies
+event_mocap/Pangolin/
+event_mocap_unified/third_party/
+rerun_cpp_sdk (2)/
+
+# Archives duplicate the source tree
+*.tar.xz

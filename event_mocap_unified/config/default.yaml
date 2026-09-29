@@ -1,0 +1,89 @@
+%YAML:1.0
+
+# ============================================================
+# Event MoCap Unified — Default Configuration
+# ============================================================
+# Override via CLI:  --flag=value
+# Override via YAML: set value here, CLI takes priority
+# ============================================================
+
+# --- Mode & I/O ---
+mode: "sim"
+# Paths relative to project root
+marker_json: "config/marker/multi_led_marker.json"
+calib_json: "config/calibration_1017.json"
+camera_config: "config/camera_config.json"
+input: ""
+output: "result/pose_log.csv"
+visualize: false
+realtime: false
+
+# --- Pose Estimation ---
+ba_window_size: 5
+# Geometry-aware candidate stage. `auto` uses IPPE (never IPPE_SQUARE) for
+# exactly four coplanar matches, then SQPNP-flagged RANSAC for 5+ or
+# non-coplanar geometry. `legacy_iterative_ransac` is an explicit ablation of
+# the former candidate solver. Candidate and final residual acceptance gates
+# apply to the selected consensus (the IPPE four-point branch has all matched
+# points in that consensus); diagnostics still log residuals for every matched
+# marker observation.
+pnp_candidate_mode: "auto"
+
+# Optional PnP measurement-stage diagnostics. Empty paths disable output and
+# do not change the historical pose CSV schema.
+pnp_diagnostics_frame_output: ""
+pnp_diagnostics_correspondence_output: ""
+
+# Causal robust post-PnP output filter. Leave false to retain the current
+# repaired robust-PnP baseline. Filtered output is never fed back as a PnP
+# prior.
+temporal_filter: false
+temporal_filter_diagnostics_output: ""
+temporal_filter_process_accel_std_mm_s2: 10000.0
+temporal_filter_measurement_std_mm: 15.0
+temporal_filter_gate_chi2: 16.27
+temporal_filter_hard_gate_chi2: 81.0
+temporal_filter_orientation_alpha: 0.35
+temporal_filter_orientation_beta: 0.025
+# 180/360 cover the full shortest-path SO(3) innovation range, so rotation
+# gating is intentionally inactive until thresholds are validated on data.
+temporal_filter_orientation_gate_deg: 180.0
+temporal_filter_orientation_hard_gate_deg: 360.0
+temporal_filter_reset_gap_us: 250000
+temporal_filter_max_consecutive_rejections: 4
+
+# --- 2D Tracking (Metavision SDK) ---
+det_num_bits: 8
+det_base_period_us: 400
+det_tolerance: 0.3
+
+trk_radius: 30.0
+trk_monitoring_freq_hz: 30.0
+trk_inactivity_period_us: 1000
+trk_alpha_pos: 0.05
+trk_distance_pct: 0.3
+
+obs_max_samples: 50
+obs_max_age_us: 2000
+obs_delta_n_events: 5000
+
+# --- Simulation ---
+trajectory: "circular"
+sim_duration: 10.0
+sim_rate_hz: 100.0
+sim_pixel_noise: 0.5
+
+sim_circle_radius: 200.0
+sim_circle_height: 500.0
+sim_circle_freq: 0.5
+
+sim_linear_speed: 50.0
+sim_linear_z: 500.0
+
+sim_sin_amp_x: 100.0
+sim_sin_amp_y: 50.0
+sim_sin_amp_z: 30.0
+sim_sin_freq_x: 0.3
+sim_sin_freq_y: 0.5
+sim_sin_freq_z: 0.2
+sim_sin_base_z: 500.0

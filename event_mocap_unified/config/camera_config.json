@@ -1,0 +1,31 @@
+{
+  "ll_biases_state": {
+   "bias": [
+    {
+     "name": "bias_diff",
+     "value": 0
+    },
+    {
+     "name": "bias_diff_off",
+     "value": 180
+    },
+    {
+     "name": "bias_diff_on",
+     "value": 60
+    },
+    {
+      "name": "bias_fo",
+      "value": 10
+    },
+    {
+     "name": "bias_hpf",
+     "value": 120
+    },
+    {
+     "name": "bias_refr",
+     "value": 0
+    }
+   ]
+  }
+ }
+ 
